@@ -1,0 +1,45 @@
+{
+  "name": "baljan-bootstrap",
+  "version": "1.0.0",
+  "description": "Bootstrap theme with Baljan colors etc.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run css && npm run js",
+    "css-compile": "sass --style compressed --source-map --embed-sources --no-error-css --load-path=node_modules scss/:dist/",
+    "css-lint": "stylelint scss/",
+    "css-prefix": "postcss --replace dist/bundle.css --use autoprefixer --map",
+    "css": "npm-run-all css-compile css-prefix",
+    "js": "webpack",
+    "server": "sirv --dev --no-clear --port 3000",
+    "start": "npm-run-all --parallel watch server",
+    "watch": "nodemon -e html,scss,js -x \"npm run css && npm run js\"",
+    "test": "npm-run-all css-lint css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baljan/baljan-bootstrap.git"
+  },
+  "author": "Emil Nilsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Baljan/baljan-bootstrap/issues"
+  },
+  "homepage": "https://github.com/Baljan/baljan-bootstrap#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.7",
+    "bootstrap": "^5.2.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "nodemon": "^2.0.22",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.23",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.62.1",
+    "sirv-cli": "^2.0.2",
+    "stylelint": "^15.6.0",
+    "stylelint-config-twbs-bootstrap": "^9.0.1",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
+  }
+}
